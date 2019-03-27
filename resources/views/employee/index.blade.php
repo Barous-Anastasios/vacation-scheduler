@@ -1,22 +1,29 @@
-<h2>My applications</h2>
+@extends('layouts.app')
 
-<a class="btn" href="/application/create">submit request</a>
+@section('content')
+    <div class="container">
+        <h2>My applications</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>DATE SUBMITTED</th>
-            <th>DATES REQUESTED</th>
-            <th>STATUS</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach(auth()->user()->applications as $application)
-        <tr>
-            <td>{{$application->created_at->format('d/m/Y')}}</td>
-            <td>{{$application->start->format('d/m/Y')}} - {{$application->end->format('d/m/Y')}}</td>
-            <td>{{$application->status->name}}</td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+        <a class="btn" href="/application/create">submit request</a>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>DATE SUBMITTED</th>
+                <th>DATES REQUESTED</th>
+                <th>STATUS</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach(auth()->user()->applications as $application)
+                <tr>
+                    <td>{{$application->created_at->format('d/m/Y')}}</td>
+                    <td>{{$application->start->format('d/m/Y')}} - {{$application->end->format('d/m/Y')}}</td>
+                    <td>{{$application->status->name}}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
+
+@endsection
