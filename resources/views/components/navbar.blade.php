@@ -1,7 +1,7 @@
 <nav class="black">
     <div class="container">
         <a class="brand-logo" href="{{ url('/') }}">
-            {{ config('app.name', 'Laravel') }}
+            Vacation Scheduler
         </a>
 
         <a href="#" data-target="mobile-demo" class="sidenav-trigger">
