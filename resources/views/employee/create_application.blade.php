@@ -2,8 +2,11 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12">
+        <div class="row">
+            <div class="col md12">
+                <h4>CREATE APPLICATION</h4>
+                <hr><br><br>
+
                 <form action="/application/submit" method="post">
                     {{ csrf_field() }}
                     <label for="">FROM</label>
@@ -15,9 +18,11 @@
                     <br><br>
 
                     <label for="">REASON</label>
-                    <textarea name="reason" >{{old('reason')}}</textarea>
+                    <textarea rows="20" style="height: 150px" cols="20" name="reason" >{{old('reason')}}</textarea>
 
-                    <button type="submit">submit</button>
+                    <br><br>
+
+                    <button class="btn" type="submit">submit</button>
                 </form>
 
                 <br>

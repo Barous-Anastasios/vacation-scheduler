@@ -1,13 +1,11 @@
 <?php
 
-Route::get('/', function () {
-    return view('home');
-})->middleware('auth');
+Route::get('/', 'HomeController@index');
+Route::get('dashboard', 'DashboardController@index');
 
 Route::middleware(['checkIfAdmin'])->group(function () {
     Route::get('admin', 'AdminController@index');
-    Route::get('application/approve/{applicationId}', 'ApplicationController@approve');
-    Route::get('application/reject/{applicationId}', 'ApplicationController@reject');
+    Route::get('application/{response}/{applicationId}', 'ApplicationController@respond');
     Route::get('user/create', 'UserController@index');
     Route::post('user/create', 'UserController@create');
     Route::get('user/edit/{userId}', 'UserController@edit');
@@ -15,13 +13,14 @@ Route::middleware(['checkIfAdmin'])->group(function () {
 });
 
 Route::middleware(['checkIfEmployee'])->group(function () {
-    Route::get('employee', 'EmployeeController@index');
+    Route::get('dashboard', 'EmployeeController@index');
     Route::get('application/create', 'ApplicationController@index');
     Route::post('application/submit', 'ApplicationController@create');
 });
 
-Route::get('forbidden', function () {
-    return view('forbidden');
-});
-
-Auth::routes();
+Route::post('login', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+Route::post('password/reset', 'Auth\ResetPasswordController@reset');

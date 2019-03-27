@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Mail;
 
 class ApplicationController extends Controller
 {
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         return view('employee.create_application');
@@ -45,21 +48,14 @@ class ApplicationController extends Controller
             $message->from(auth()->user()->email);
         });
 
-        return redirect('/home');
+        return redirect('/')->with(['message'=>'Application created successfully']);
     }
 
-    public function reject($applicationId)
-    {
-        $this->respond('rejected', $applicationId);
-        return redirect('/home')->with(['message'=>'Response email was sent to employee']);
-    }
-
-    public function approve($applicationId)
-    {
-        $this->respond('approved', $applicationId);
-        return redirect('/home')->with(['message'=>'Response email was sent to employee']);
-    }
-
+    /**
+     * @param $response
+     * @param $applicationId
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function respond($response, $applicationId)
     {
         $application = Application::find($applicationId);
@@ -71,6 +67,7 @@ class ApplicationController extends Controller
             $message->to($application->user->email)->subject('Vacation Request');
             $message->from(auth()->user()->email);
         });
+        return redirect('/')->with(['message'=>'Response email was sent to employee']);
     }
 
     /**

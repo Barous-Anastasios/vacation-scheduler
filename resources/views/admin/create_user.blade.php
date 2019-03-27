@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <h2>CREATE USER</h2>
+        <h4>CREATE USER</h4>
         <form action="/user/create" method="post">
             {{csrf_field()}}
             <label for="">FIRST NAME</label>

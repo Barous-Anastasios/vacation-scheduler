@@ -21,6 +21,6 @@ class CheckIfEmployee
             }
         }
 
-        return redirect('forbidden');
+        return redirect('/');
     }
 }
