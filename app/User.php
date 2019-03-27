@@ -42,6 +42,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function applications()
+    {
+        return $this->hasMany(Application::class)->orderBy('created_at','DESC');
+    }
+
     public function getRole()
     {
         foreach ($this->roles as $role) {

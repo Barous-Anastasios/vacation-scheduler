@@ -12,7 +12,19 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(auth()->check()){
+        return view('home');
+    } else {
+        return redirect('login');
+    }
+});
+
+Route::get('create_application', 'ApplicationController@index')->middleware('checkIfEmployee');
+Route::post('submit_application', 'ApplicationController@create')->middleware('checkIfEmployee');
+
+
+Route::get('forbidden', function(){
+    return view('forbidden');
 });
 
 Auth::routes();
