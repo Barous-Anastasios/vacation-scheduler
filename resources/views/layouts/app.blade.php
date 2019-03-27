@@ -15,8 +15,13 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    {{--FOR HTTPS HEROKU--}}
+    <script src="https://vacation-scheduler.herokuapp.com/js/app.js"></script>
+    <link rel="stylesheet" href="https://vacation-scheduler.herokuapp.com/css/app.css">
+
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
