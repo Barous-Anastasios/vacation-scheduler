@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Application;
 use App\Role;
+use App\Status;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -50,17 +51,19 @@ class ApplicationController extends Controller
     public function reject($applicationId)
     {
         $this->respond('rejected', $applicationId);
+        return redirect('/home')->with(['message'=>'Response email was sent to employee']);
     }
 
     public function approve($applicationId)
     {
         $this->respond('approved', $applicationId);
+        return redirect('/home')->with(['message'=>'Response email was sent to employee']);
     }
 
     public function respond($response, $applicationId)
     {
         $application = Application::find($applicationId);
-        $application->status = $response;
+        $application->status_id = Status::where('name', $response)->first()->id;
         $application->save();
         // MAIL
         $mail_data = array('data' => ['response'=>$response, 'date'=>$application->created_at]);

@@ -23,6 +23,6 @@ class CheckIfAdmin
             }
         }
 
-        return redirect('login');
+        return redirect('login')->with(['message'=>'You have to login as admin']);
     }
 }
