@@ -18,7 +18,7 @@
                                                name="email" value="{{ old('email') }}" required autofocus>
 
                                         @if ($errors->has('email'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback black-text" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                         @endif
@@ -35,7 +35,7 @@
                                                name="password" required>
 
                                         @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
+                                            <span class="invalid-feedback black-text" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
                                         </span>
                                         @endif

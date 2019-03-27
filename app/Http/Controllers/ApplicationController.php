@@ -9,6 +9,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ApplicationController extends Controller
 {
@@ -67,7 +68,8 @@ class ApplicationController extends Controller
             $message->to($application->user->email)->subject('Vacation Request');
             $message->from(auth()->user()->email);
         });
-        return redirect('/')->with(['message'=>'Response email was sent to employee']);
+
+        return redirect('/admin/response/sent');
     }
 
     /**

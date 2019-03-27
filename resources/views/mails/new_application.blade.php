@@ -7,7 +7,7 @@
 <p>
     Click on one of the below links to approve or reject the application:
     <br>
-    <a href="{{url('/')}}/application/approve/{{$data['application_id']}}">Approve</a>
-    <a href="{{url('/')}}/application/reject/{{$data['application_id']}}">Reject</a>
+    <a href="{{url('/')}}/application/approved/{{$data['application_id']}}">Approve</a>
+    <a href="{{url('/')}}/application/rejected/{{$data['application_id']}}">Reject</a>
 </p>
 

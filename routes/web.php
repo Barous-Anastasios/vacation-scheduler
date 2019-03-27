@@ -12,6 +12,8 @@ Route::middleware(['admin'])->group(function () {
     Route::post('user/edit/{userId}', 'UserController@update');
 });
 
+Route::get('admin/response/sent', 'AdminController@sentResponse');
+
 Route::middleware(['employee'])->group(function () {
     Route::get('dashboard', 'EmployeeController@index');
     Route::get('application/create', 'ApplicationController@index');
