@@ -77,7 +77,7 @@ class ApplicationController extends Controller
      * @param Request $request
      * @return mixed
      */
-    protected function validateData(Request $request)
+    protected function validateData($request)
     {
         return $request->validate([
             'start' => 'required|after:today|date_format:d/m/Y',
