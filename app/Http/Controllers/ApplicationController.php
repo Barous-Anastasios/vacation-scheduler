@@ -42,6 +42,7 @@ class ApplicationController extends Controller
 
         $admin = User::where('role_id', 1)->first();
 
+//        event(new ApplicationRequestEvent($application));
         // MAIL
         $mail_data = array('data' => $data);
         Mail::send('mails.new_application', $mail_data, function($message) use ($admin) {
