@@ -13,25 +13,24 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        $employee = Role::where('name', 'employee')->first();
-        $admin = Role::where('name', 'admin')->first();
-
         $user = new User;
-        $user->name = 'Employee';
+        $user->first_name = 'Employee';
+        $user->last_name = 'Employeeeeee';
         $user->email = 'employee@email.com';
         $user->email_verified_at = now();
         $user->password = bcrypt('123456');
         $user->remember_token = Str::random(10);
-        $user->role_id = 2;
+        $user->role_id = \App\Enums\UserType::Employee;
         $user->save();
 
         $user = new User;
-        $user->name = 'Admin';
+        $user->first_name = 'Admin';
+        $user->last_name = 'Adminnnnn';
         $user->email = 'admin@email.com';
         $user->email_verified_at = now();
         $user->password = bcrypt('123456');
         $user->remember_token = Str::random(10);
-        $user->role_id = 1;
+        $user->role_id = \App\Enums\UserType::Administrator;
         $user->save();
     }
 }

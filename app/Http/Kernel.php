@@ -2,7 +2,7 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\CheckIfEmployee;
+use App\Http\Middleware\Employee;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -61,8 +61,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'checkIfEmployee' => \App\Http\Middleware\CheckIfEmployee::class,
-        'checkIfAdmin' => \App\Http\Middleware\CheckIfAdmin::class
+        'employee' => \App\Http\Middleware\Employee::class,
+        'admin' => \App\Http\Middleware\Admin::class
     ];
 
     /**

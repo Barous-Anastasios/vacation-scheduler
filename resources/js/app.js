@@ -8,6 +8,10 @@ $(document).ready(function(){
     $('select').formSelect();
     $('.sidenav').sidenav();
     $('.dropdown-trigger').dropdown();
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        autoClose: true
+    });
 });
 
 const app = new Vue({

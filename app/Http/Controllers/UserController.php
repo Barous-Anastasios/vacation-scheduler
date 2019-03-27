@@ -14,25 +14,17 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $data = $this->validateData($request);
+        $data = $request->validate([
+            'first_name' => 'required|alpha|between:1,25',
+            'last_name' => 'required|alpha|between:1,25',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|between:6,100',
+            'role_id' => 'required|integer'
+        ]);
+
         User::create($data);
 
-        return redirect('/home');
-    }
-
-    /**
-     * @param Request $request
-     * @return mixed
-     */
-    protected function validateData($request)
-    {
-        return $request->validate([
-            'name' => 'required',
-            'lname' => 'required',
-            'email' => 'required',
-            'password' => 'required',
-            'role_id' => 'required'
-        ]);
+        return redirect('/admin')->with(['message'=>'User was created successfully']);
     }
 
     public function edit($userId)
@@ -41,14 +33,19 @@ class UserController extends Controller
         return view('admin.edit_user', compact('user'));
     }
 
-    public function update(Request $request)
+    public function update($userId)
     {
-        $data = $this->validateData($request);
+        $data = request()->validate([
+            'first_name' => 'required|alpha|between:1,25',
+            'last_name' => 'required|alpha|between:1,25',
+            'email' => 'required|email',
+            'role_id' => 'required|integer'
+        ]);
 
-        $user = User::find($request->id);
+        $user = User::find($userId);
 
         $user->update($data);
 
-        return redirect('/home');
+        return redirect('/admin')->with(['message'=>'User was edited successfully']);
     }
 }

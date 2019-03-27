@@ -11,7 +11,7 @@ class EmployeeController extends Controller
     {
         $applications = Application::where('user_id', auth()->user()->id)
             ->orderBy('created_at', 'DESC')
-            ->simplePaginate(5);
+            ->simplePaginate(10);
         return view('employee.dashboard', compact('applications'));
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckIfAdmin
+class Admin
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class CheckIfAdmin
     public function handle($request, Closure $next)
     {
         if(auth()->check()) {
-            if(auth()->user()->role->id == 1){
+            if (auth()->user()->isAdmin()) {
                 return $next($request);
             }
         }

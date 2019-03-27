@@ -48,7 +48,7 @@ class ApplicationController extends Controller
             $message->from(auth()->user()->email);
         });
 
-        return redirect('/')->with(['message'=>'Application created successfully']);
+        return redirect('/dashboard')->with(['message'=>'Application created successfully']);
     }
 
     /**

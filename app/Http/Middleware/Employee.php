@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckIfEmployee
+class Employee
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class CheckIfEmployee
     public function handle($request, Closure $next)
     {
         if(auth()->check()) {
-            if (auth()->user()->role->id == 2) {
+            if (auth()->user()->isEmployee()) {
                 return $next($request);
             }
         }

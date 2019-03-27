@@ -32,7 +32,11 @@
                 </tbody>
             </table>
 
-            {{$applications->links()}}
+            <br>
+
+            <div class="center-align">
+                {{$applications->links()}}
+            </div>
         </div>
     </div>
 @endsection

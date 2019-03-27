@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Enums\UserType;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'lname', 'email', 'password', 'role_id'
+        'first_name', 'last_name', 'email', 'password', 'role_id'
     ];
 
     /**
@@ -37,13 +38,39 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function role()
     {
         return $this->belongsTo(Role::class);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function applications()
     {
         return $this->hasMany(Application::class)->orderBy('created_at','DESC');
+    }
+
+    /**
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        if($this->role_id==UserType::Administrator){
+            return true;
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function isEmployee()
+    {
+        if($this->role_id == UserType::Employee){
+            return true;
+        }
     }
 }

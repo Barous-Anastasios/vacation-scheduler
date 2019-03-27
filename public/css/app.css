@@ -9273,10 +9273,18 @@ body {
   font-family: "Source Sans Pro";
 }
 
-.alert {
+.alert-success {
   text-align: center;
   padding: 20px;
   background: lightblue;
   font-size: 20px;
+}
+
+.dropdown-content {
+  top: 60px !important;
+}
+
+li {
+  font-size: 1.3rem;
 }
 

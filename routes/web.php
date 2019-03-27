@@ -3,16 +3,16 @@
 Route::get('/', 'HomeController@index');
 Route::get('dashboard', 'DashboardController@index');
 
-Route::middleware(['checkIfAdmin'])->group(function () {
+Route::middleware(['admin'])->group(function () {
     Route::get('admin', 'AdminController@index');
     Route::get('application/{response}/{applicationId}', 'ApplicationController@respond');
     Route::get('user/create', 'UserController@index');
     Route::post('user/create', 'UserController@create');
     Route::get('user/edit/{userId}', 'UserController@edit');
-    Route::post('user/edit', 'UserController@update');
+    Route::post('user/edit/{userId}', 'UserController@update');
 });
 
-Route::middleware(['checkIfEmployee'])->group(function () {
+Route::middleware(['employee'])->group(function () {
     Route::get('dashboard', 'EmployeeController@index');
     Route::get('application/create', 'ApplicationController@index');
     Route::post('application/submit', 'ApplicationController@create');
