@@ -16,10 +16,8 @@ class CheckIfEmployee
     public function handle($request, Closure $next)
     {
         if(auth()->check()) {
-            foreach (auth()->user()->roles as $role) {
-                if ($role->id == 2) {
-                    return $next($request);
-                }
+            if (auth()->user()->role->id == 2) {
+                return $next($request);
             }
         }
 

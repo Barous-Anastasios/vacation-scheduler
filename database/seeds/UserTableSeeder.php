@@ -22,8 +22,8 @@ class UserTableSeeder extends Seeder
         $user->email_verified_at = now();
         $user->password = bcrypt('123456');
         $user->remember_token = Str::random(10);
+        $user->role_id = 2;
         $user->save();
-        $user->roles()->attach($employee);
 
         $user = new User;
         $user->name = 'Admin';
@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
         $user->email_verified_at = now();
         $user->password = bcrypt('123456');
         $user->remember_token = Str::random(10);
+        $user->role_id = 1;
         $user->save();
-        $user->roles()->attach($admin);
     }
 }

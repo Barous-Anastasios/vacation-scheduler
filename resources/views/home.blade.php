@@ -9,7 +9,7 @@
                         {{session()->get('message')}}
                     </div>
                 @endif
-                @include(auth()->user()->getRole() . '.index')
+                @include(auth()->user()->role->name . '.index')
             </div>
         </div>
     </div>

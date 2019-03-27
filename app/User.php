@@ -37,26 +37,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function roles()
+    public function role()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     public function applications()
     {
         return $this->hasMany(Application::class)->orderBy('created_at','DESC');
-    }
-
-    public function getRole()
-    {
-        foreach ($this->roles as $role) {
-            if($role->id == 1){
-                return 'admin';
-            }
-
-            if($role->id == 2){
-                return 'employee';
-            }
-        }
     }
 }

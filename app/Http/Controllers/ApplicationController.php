@@ -36,7 +36,7 @@ class ApplicationController extends Controller
         $application = Application::create($formatted_data);
         $data['application_id'] = $application->id;
 
-        $admin = $this->getAdmin();
+        $admin = User::where('role_id', 1)->first();
 
         // MAIL
         $mail_data = array('data' => $data);
@@ -84,12 +84,5 @@ class ApplicationController extends Controller
             'end' => 'required|after:start|date_format:d/m/Y',
             'reason' => 'required'
         ]);
-    }
-
-    protected function getAdmin(): User
-    {
-        return User::whereHas('roles', function ($q) {
-            $q->where('id', '=', '1');
-        })->first();
     }
 }
