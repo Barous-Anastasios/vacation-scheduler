@@ -27,11 +27,11 @@ class SendApplicationRequestEmail
      */
     public function handle(ApplicationRequestEvent $event)
     {
-        $admin = User::where('role_id', 1)->first();
-//        $mail_data = array('data' => $data);
-        Mail::send('mails.new_application', $mail_data, function($message) use ($admin) {
-            $message->to($admin->email)->subject('Vacation Request');
-            $message->from(auth()->user()->email);
-        });
+//        $admin = User::where('role_id', 1)->first();
+////        $mail_data = array('data' => $data);
+//        Mail::send('mails.new_application', $mail_data, function($message) use ($admin) {
+//            $message->to($admin->email)->subject('Vacation Request');
+//            $message->from(auth()->user()->email);
+//        });
     }
 }
