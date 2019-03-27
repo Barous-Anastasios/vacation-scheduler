@@ -14,4 +14,9 @@ class Application extends Model
     {
         return $this->belongsTo('App\Status');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

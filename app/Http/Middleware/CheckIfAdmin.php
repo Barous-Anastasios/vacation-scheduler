@@ -4,7 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 
-class CheckIfEmployee
+class CheckIfAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,12 +17,12 @@ class CheckIfEmployee
     {
         if(auth()->check()) {
             foreach (auth()->user()->roles as $role) {
-                if ($role->id == 2) {
+                if($role->id==1){
                     return $next($request);
                 }
             }
         }
 
-        return redirect('forbidden');
+        return redirect('login');
     }
 }

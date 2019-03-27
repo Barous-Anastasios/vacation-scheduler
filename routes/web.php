@@ -19,14 +19,14 @@ Route::get('/', function () {
     }
 });
 
-Route::get('create_application', 'ApplicationController@index')->middleware('checkIfEmployee');
-Route::post('submit_application', 'ApplicationController@create')->middleware('checkIfEmployee');
-
+Route::get('application/create', 'ApplicationController@index')->middleware('checkIfEmployee');
+Route::post('application/submit', 'ApplicationController@create')->middleware('checkIfEmployee');
+Route::get('application/approve/{applicationId}', 'ApplicationController@approve')->middleware('checkIfAdmin');
+Route::get('application/reject/{applicationId}', 'ApplicationController@reject')->middleware('checkIfAdmin');
 
 Route::get('forbidden', function(){
     return view('forbidden');
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <form action="/submit_application" method="post">
+                <form action="/application/submit" method="post">
                     {{ csrf_field() }}
                     <label for="">FROM</label>
                     <input name="start" type='text' class="datepicker-here" data-date-format="dd/mm/yyyy" data-language='en'/>

@@ -1,6 +1,6 @@
 <h2>My applications</h2>
 
-<a href="/create_application">submit request</a>
+<a href="/application/create">submit request</a>
 
 <table class="table">
     <thead>
